@@ -5,7 +5,7 @@ import styles from "./Home.module.css";
 function Search() {
   const [loading, setLoading] = useState(true);
   const [movieResult, setMovieResult] = useState([]);
-  //const input = document.getElementsByClassName(".keyword").value;
+
   const lookUp = async () => {
     const input = document.querySelector(".keyword").value;
     const response = await fetch(
@@ -13,13 +13,14 @@ function Search() {
     );
     const json = await response.json();
     console.log(input);
-    console.log(json.data.movies);
+
     setMovieResult(json.data.movies);
     setLoading(false);
   };
   useEffect(() => {
     lookUp();
   }, []);
+
   console.log(movieResult);
   return (
     <div>
@@ -34,16 +35,14 @@ function Search() {
         <div className={styles.container}>
           {movieResult &&
             movieResult.map((movie) => (
-              <div>
-                <Movie
-                  key={movie.id}
-                  id={movie.id}
-                  coverImg={movie.medium_cover_image}
-                  title={movie.title}
-                  summary={movie.summary}
-                  genres={movie.genres}
-                />
-              </div>
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                coverImg={movie.medium_cover_image}
+                title={movie.title}
+                summary={movie.summary}
+                genres={movie.genres}
+              />
             ))}
         </div>
       )}

@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
-
+import notFound from "./image_not_found.png";
 function Movie({ id, coverImg, title, summary, genres }) {
+  const imgHandleError = (e) => {
+    console.log("image not found");
+    e.target.src = notFound;
+  };
   return (
     <div className={styles.content}>
-      <img className={styles.content_img} src={coverImg} alt={title}></img>
+      <img
+        onError={imgHandleError}
+        className={styles.content_img}
+        src={coverImg}
+        alt={title}
+      ></img>
       <h2>
         <Link key={id} to={`/movie/${id}`}>
           {title}
