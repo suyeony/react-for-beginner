@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
+import Nav from "../components/Nav";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -20,10 +21,7 @@ function Home() {
 
   return (
     <div>
-      <nav>
-        <a href={process.env.PUBLIC_URL + "/"}>Movies</a>
-        <a href="/search">Search</a>
-      </nav>
+      <Nav />
       {loading ? (
         <h1>Loading...</h1>
       ) : (

@@ -1,0 +1,27 @@
+.search_input {
+  text-align: center;
+  padding-top: 20px;
+}
+
+input {
+  border: none;
+  font-size: 17px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.underlined {
+  background-color: black;
+  width: 440px;
+  display: inline-block;
+  height: 2px;
+  position: absolute;
+  top: 100px;
+  left: 490px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  margin: 20px 10px;
+  padding: 10px;
+}

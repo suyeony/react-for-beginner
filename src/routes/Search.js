@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
-import styles from "./Home.module.css";
+import Nav from "../components/Nav";
+import styles from "./Search.module.css";
 
 function Search() {
   const [loading, setLoading] = useState(true);
@@ -24,25 +25,26 @@ function Search() {
   console.log(movieResult);
   return (
     <div>
-      <nav>
-        <a href={process.env.PUBLIC_URL + "/"}>Movies</a>
-        <a href="/search">Search</a>
-      </nav>
-      <input onChange={lookUp} className="keyword" type="string"></input>
+      <Nav />
+      <div className={styles.search_input}>
+        <input
+          size="50"
+          onChange={lookUp}
+          className="keyword"
+          type="string"
+          placeholder="type something..."
+        ></input>
+        <span className={styles.underlined}></span>
+      </div>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <div className={styles.container}>
           {movieResult &&
             movieResult.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                coverImg={movie.medium_cover_image}
-                title={movie.title}
-                summary={movie.summary}
-                genres={movie.genres}
-              />
+              <div key={movie.id}>
+                <img src={movie.medium_cover_image} alt={movie.title}></img>
+              </div>
             ))}
         </div>
       )}

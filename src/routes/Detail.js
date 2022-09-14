@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./Detail.module.css";
+import Nav from "../components/Nav";
+
 function Detail() {
   //add loading
   // add json in state
@@ -21,22 +24,24 @@ function Detail() {
   }, []);
   return (
     <div>
+      <Nav className={styles.nav} />
       {loading ? (
         <h1>loading...</h1>
       ) : (
-        <div>
+        <div className={styles.content}>
           <img src={movie.medium_cover_image} alt={movie.title} />
-          <h2>
-            {movie.title}({movie.year})
-          </h2>
-          <h3>Genre</h3>
-          <ul>
-            {movie.genres.map((genre) => (
-              <li>{genre}</li>
-            ))}
-          </ul>
-          <p>{movie.description_full}</p>
-          <p>rating: {movie.rating}</p>
+          <div className={styles.movieInfo}>
+            <h2>
+              {movie.title}({movie.year})
+            </h2>
+            <ul className={styles.genre_list}>
+              {movie.genres.map((genre) => (
+                <li key={genre}>#{genre}</li>
+              ))}
+            </ul>
+            <p>{movie.description_full}</p>
+            <p>rating: {movie.rating}</p>
+          </div>
         </div>
       )}
     </div>

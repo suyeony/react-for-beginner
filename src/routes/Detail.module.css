@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  left: 10px;
+  background-color: antiquewhite;
+  width: 100%;
+}
+
+img {
+  padding: 10px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin: 50px 200px;
+  font-size: 15px;
+  width: 70%;
+}
+
+.movieInfo {
+  padding: 5px 50px;
+}
+
+.genre_list {
+  display: flex;
+  list-style: none;
+  bottom: 20px;
+  color: darkgray;
+}
