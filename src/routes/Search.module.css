@@ -25,3 +25,26 @@ input {
   margin: 20px 10px;
   padding: 10px;
 }
+
+.search_result {
+  position: relative;
+}
+.search_result:hover .search_img {
+  opacity: 0.4;
+}
+
+.search_result:hover .search_title {
+  opacity: 1;
+}
+
+.search_img {
+}
+
+.search_title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  opacity: 0;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import Nav from "../components/Nav";
 import styles from "./Search.module.css";
+import { Link } from "react-router-dom";
 
 function Search() {
   const [loading, setLoading] = useState(true);
@@ -42,8 +43,17 @@ function Search() {
         <div className={styles.container}>
           {movieResult &&
             movieResult.map((movie) => (
-              <div key={movie.id}>
-                <img src={movie.medium_cover_image} alt={movie.title}></img>
+              <div className={styles.search_result} key={movie.id}>
+                <img
+                  className={styles.search_img}
+                  src={movie.medium_cover_image}
+                  alt={movie.title}
+                ></img>
+                <div className={styles.search_title}>
+                  <Link key={movie.id} to={`/movie/${movie.id}`}>
+                    {movie.title}
+                  </Link>
+                </div>
               </div>
             ))}
         </div>
