@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import Movie from "../components/Movie";
 import Nav from "../components/Nav";
 import styles from "./Search.module.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function Search() {
   const [loading, setLoading] = useState(true);
@@ -23,6 +27,7 @@ function Search() {
     lookUp();
   }, []);
 
+  library.add(faMagnifyingGlass);
   console.log(movieResult);
   return (
     <div>
@@ -33,9 +38,12 @@ function Search() {
           onChange={lookUp}
           className="keyword"
           type="string"
-          placeholder="type something..."
+          placeholder="Type something..."
         ></input>
         <span className={styles.underlined}></span>
+        <span className={styles.search_button}>
+          <FontAwesomeIcon icon="magnifying-glass" />
+        </span>
       </div>
       {loading ? (
         <h1>Loading...</h1>
@@ -49,10 +57,19 @@ function Search() {
                   src={movie.medium_cover_image}
                   alt={movie.title}
                 ></img>
-                <div className={styles.search_title}>
-                  <Link key={movie.id} to={`/movie/${movie.id}`}>
-                    {movie.title}
-                  </Link>
+                <div className={styles.search_info}>
+                  <div className={styles.search_title}>
+                    <Link
+                      className={styles.search_title_a}
+                      key={movie.id}
+                      to={`/movie/${movie.id}`}
+                    >
+                      {movie.title}
+                    </Link>
+                  </div>
+                  <div className={styles.search_rating}>
+                    ⭐️ {movie.rating}/10
+                  </div>
                 </div>
               </div>
             ))}

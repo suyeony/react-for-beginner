@@ -40,7 +40,7 @@ function Detail() {
               ))}
             </ul>
             <p>{movie.description_full}</p>
-            <p>rating: {movie.rating}</p>
+            <p>⭐️{movie.rating}/10</p>
           </div>
         </div>
       )}
