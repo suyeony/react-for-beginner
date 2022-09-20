@@ -1,24 +1,25 @@
-nav {
-  display: flex;
-  left: 10px;
-  background-color: antiquewhite;
-  width: 100%;
-}
-
 img {
   padding: 10px;
 }
 
 .content {
-  display: flex;
+  text-align: center;
   justify-content: center;
-  margin: 50px 200px;
+  margin: 0px;
   font-size: 15px;
-  width: 70%;
+  width: 100%;
+}
+
+.movie_section {
+  background-color: lightgray;
 }
 
 .movieInfo {
+  background-color: white;
   padding: 5px 50px;
+  border-radius: 0.5em;
+  width: 500px;
+  z-index: 10;
 }
 
 .genre_list {

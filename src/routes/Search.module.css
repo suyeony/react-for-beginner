@@ -47,6 +47,8 @@ input {
 
 .search_img {
   display: block;
+  width: 250px;
+  height: 365px;
 }
 
 .search_info {

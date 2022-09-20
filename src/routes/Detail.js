@@ -24,23 +24,26 @@ function Detail() {
   }, []);
   return (
     <div>
-      <Nav className={styles.nav} />
+      <Nav />
       {loading ? (
         <h1>loading...</h1>
       ) : (
         <div className={styles.content}>
-          <img src={movie.medium_cover_image} alt={movie.title} />
-          <div className={styles.movieInfo}>
-            <h2>
-              {movie.title}({movie.year})
-            </h2>
-            <ul className={styles.genre_list}>
+          <img src={movie.large_cover_image} alt={movie.title} />
+          <div className={styles.movie_section}>
+            <h2>About</h2>
+            <div className={styles.movieInfo}>
+              <h2>
+                {movie.title}({movie.year})
+              </h2>
+              {/* <ul className={styles.genre_list}>
               {movie.genres.map((genre) => (
                 <li key={genre}>#{genre}</li>
               ))}
-            </ul>
-            <p>{movie.description_full}</p>
-            <p>⭐️{movie.rating}/10</p>
+            </ul> */}
+              <p>{movie.description_full}</p>
+            </div>
+            <div></div>
           </div>
         </div>
       )}

@@ -5,15 +5,23 @@
   border-radius: 1em;
   margin: 10px;
   font-size: 15px;
+  position: relative;
 }
 
 .content_img {
   margin-top: 20px;
 }
 
+.summary {
+  margin: 60px 20px;
+}
+
 .genre_list {
+  position: absolute;
   display: flex;
   list-style: none;
-  bottom: 20px;
+  bottom: -10px;
   color: darkgray;
+  padding: 0px;
+  margin: 20px;
 }

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import React from "react";
-import Movie from "../components/Movie";
 import Nav from "../components/Nav";
 import styles from "./Search.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import notFound from "../components/image_not_found.png";
 
 function Search() {
   const [loading, setLoading] = useState(true);
@@ -28,6 +27,12 @@ function Search() {
   }, []);
 
   library.add(faMagnifyingGlass);
+
+  const imgHandleError = (e) => {
+    console.log("image not found");
+    e.target.src = notFound;
+  };
+
   console.log(movieResult);
   return (
     <div>
@@ -38,10 +43,10 @@ function Search() {
           onChange={lookUp}
           className="keyword"
           type="string"
-          placeholder="Type something..."
+          placeholder="Search"
         ></input>
         <span className={styles.underlined}></span>
-        <span className={styles.search_button}>
+        <span onSubmit={lookUp} className={styles.search_button}>
           <FontAwesomeIcon icon="magnifying-glass" />
         </span>
       </div>
@@ -53,6 +58,7 @@ function Search() {
             movieResult.map((movie) => (
               <div className={styles.search_result} key={movie.id}>
                 <img
+                  onError={imgHandleError}
                   className={styles.search_img}
                   src={movie.medium_cover_image}
                   alt={movie.title}
