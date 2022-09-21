@@ -2,6 +2,10 @@ img {
   padding: 10px;
 }
 
+.category_title {
+  padding-top: 40px;
+  margin-left: 55px;
+}
 .content {
   text-align: center;
   justify-content: center;
@@ -11,20 +15,54 @@ img {
 }
 
 .movie_section {
-  background-color: lightgray;
+  text-align: initial;
+  height: 600px;
+  background-color: #f0f0f3;
 }
 
 .movieInfo {
   background-color: white;
-  padding: 5px 50px;
+  padding: 5px 10px;
   border-radius: 0.5em;
   width: 500px;
   z-index: 10;
+  margin-left: 50px;
 }
 
+.title {
+  padding-left: 5px;
+}
 .genre_list {
   display: flex;
   list-style: none;
   bottom: 20px;
-  color: darkgray;
+  color: #707070;
+  padding: 0px;
+}
+
+.genre_list li {
+  padding-left: 5px;
+}
+
+.desc {
+  color: #707070;
+  padding-left: 5px;
+}
+
+.desc_more {
+  color: blue;
+}
+
+.info_section {
+  margin-left: 40px;
+  padding: 5px 10px;
+}
+
+.info_section p {
+  padding-left: 5px;
+}
+
+.year {
+  color: #707070;
+  padding-left: 5px;
 }

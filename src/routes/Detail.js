@@ -31,19 +31,40 @@ function Detail() {
         <div className={styles.content}>
           <img src={movie.large_cover_image} alt={movie.title} />
           <div className={styles.movie_section}>
-            <h2>About</h2>
+            <h4 className={styles.category_title}>About</h4>
             <div className={styles.movieInfo}>
-              <h2>
+              <h4 className={styles.title}>
                 {movie.title}({movie.year})
-              </h2>
-              {/* <ul className={styles.genre_list}>
-              {movie.genres.map((genre) => (
-                <li key={genre}>#{genre}</li>
-              ))}
-            </ul> */}
-              <p>{movie.description_full}</p>
+              </h4>
+              <ul className={styles.genre_list}>
+                {movie.genres.map((genre) => (
+                  <li key={genre}>{`${genre} `}</li>
+                ))}
+              </ul>
+              <p className={styles.desc}>
+                {movie.description_full.length > 414
+                  ? movie.description_full.slice(0, 414) + "..."
+                  : movie.description_full}
+                {/* {document.querySelector(".desc_more").className()} */}
+              </p>
+              <span className={styles.desc_more} type="button">
+                MORE
+              </span>
             </div>
-            <div></div>
+            <hr></hr>
+            <div>
+              <h4 className={styles.category_title}>Information</h4>
+              <div className={styles.info_section}>
+                <p>Genre</p>
+                <ul className={styles.genre_list}>
+                  {movie.genres.map((genre) => (
+                    <li key={genre}>{genre + " "} </li>
+                  ))}
+                </ul>
+                <p>Released</p>
+                <p className={styles.year}>{movie.year}</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
