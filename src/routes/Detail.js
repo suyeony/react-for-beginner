@@ -22,6 +22,17 @@ function Detail() {
   useEffect(() => {
     getMovie();
   }, []);
+
+  const desc_more = () => {
+    let descWindow = window.open(
+      "about:blank",
+      "hello",
+      "height=300,width=500,top=50%,left=50%,margin=20px"
+    );
+    descWindow.document.write(
+      `<div className=${styles.desc_more_screen}><h2>${movie.title}</h2><p>${movie.description_full}</p></div>`
+    );
+  };
   return (
     <div>
       <Nav />
@@ -47,7 +58,11 @@ function Detail() {
                   : movie.description_full}
                 {/* {document.querySelector(".desc_more").className()} */}
               </p>
-              <span className={styles.desc_more} type="button">
+              <span
+                onClick={desc_more}
+                className={styles.desc_more}
+                type="button"
+              >
                 MORE
               </span>
             </div>

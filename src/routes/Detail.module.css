@@ -56,6 +56,7 @@ img {
 .info_section {
   margin-left: 40px;
   padding: 5px 10px;
+  font-size: 13px;
 }
 
 .info_section p {
@@ -65,4 +66,8 @@ img {
 .year {
   color: #707070;
   padding-left: 5px;
+}
+
+.desc_more_screen {
+  padding: 10px;
 }
