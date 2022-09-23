@@ -1,8 +1,9 @@
 nav {
   display: flex;
-  left: 10px;
   background-color: black;
+  top: 0px;
   width: 100%;
+  position: fixed;
 }
 
 .nav_a {

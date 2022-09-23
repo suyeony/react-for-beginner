@@ -1,3 +1,7 @@
+.search_content {
+  margin-top: 60px;
+}
+
 .search_input {
   text-align: center;
   padding-top: 20px;
@@ -36,6 +40,7 @@ input {
   position: relative;
   justify-content: center;
   text-align: center;
+  padding: 10px;
 }
 .search_result:hover .search_img {
   opacity: 0.3;
@@ -49,6 +54,8 @@ input {
   display: block;
   width: 250px;
   height: 365px;
+  z-index: -1;
+  position: relative;
 }
 
 .search_info {

@@ -40,7 +40,11 @@ function Detail() {
         <h1>loading...</h1>
       ) : (
         <div className={styles.content}>
-          <img src={movie.large_cover_image} alt={movie.title} />
+          <img
+            className={styles.detail_image}
+            src={movie.large_cover_image}
+            alt={movie.title}
+          />
           <div className={styles.movie_section}>
             <h4 className={styles.category_title}>About</h4>
             <div className={styles.movieInfo}>
@@ -52,19 +56,22 @@ function Detail() {
                   <li key={genre}>{`${genre} `}</li>
                 ))}
               </ul>
-              <p className={styles.desc}>
-                {movie.description_full.length > 414
-                  ? movie.description_full.slice(0, 414) + "..."
-                  : movie.description_full}
-                {/* {document.querySelector(".desc_more").className()} */}
-              </p>
-              <span
-                onClick={desc_more}
-                className={styles.desc_more}
-                type="button"
-              >
-                MORE
-              </span>
+              {movie.description_full.length > 414 ? (
+                <div>
+                  <p className={styles.desc}>
+                    {movie.description_full.slice(0, 414)}...
+                  </p>
+                  <span
+                    onClick={desc_more}
+                    className={styles.desc_more}
+                    type="button"
+                  >
+                    MORE
+                  </span>
+                </div>
+              ) : (
+                movie.description_full
+              )}
             </div>
             <hr></hr>
             <div>
