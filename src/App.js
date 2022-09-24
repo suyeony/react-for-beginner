@@ -9,8 +9,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/movie/:id" element={<Detail />}></Route>
-        <Route path={process.env.PUBLIC_URL + "/"} element={<Home />}></Route>
         <Route path="/search" element={<Search />}></Route>
+        <Route path={process.env.PUBLIC_URL + "/"} element={<Home />}></Route>
       </Routes>
     </Router>
   );
