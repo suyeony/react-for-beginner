@@ -1,14 +1,15 @@
 import styles from "./Nav.module.css";
+import { Link } from "react-router-dom";
 
 function Nav() {
   return (
     <nav>
-      <a className={styles.nav_a} href={process.env.PUBLIC_URL + "/"}>
-        Movies
-      </a>
-      <a className={styles.nav_a} href="/search">
-        Search
-      </a>
+      <li className={styles.nav_list}>
+        <Link to={process.env.PUBLIC_URL + "/"}>Movies</Link>
+      </li>
+      <li className={styles.nav_list}>
+        <Link to={process.env.PUBLIC_URL + "/search"}>Search</Link>
+      </li>
     </nav>
   );
 }

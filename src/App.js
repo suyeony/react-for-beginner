@@ -17,3 +17,7 @@ function App() {
 }
 
 export default App;
+
+// .nav_list:hover {
+//   color: rgba(255, 255, 255, 0.5);
+// }

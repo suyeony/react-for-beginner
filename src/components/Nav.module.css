@@ -4,13 +4,19 @@ nav {
   top: 0px;
   width: 100%;
   position: fixed;
+  height: 50px;
+  align-items: center;
 }
 
-.nav_a {
+.nav_list a {
   text-decoration: none;
-  padding: 20px;
   color: white;
 }
-.nav_a:hover {
+
+.nav_list a:hover {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.nav_list::marker {
+  margin: 0px !important;
 }
