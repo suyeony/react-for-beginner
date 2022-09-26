@@ -29,7 +29,7 @@ function Search() {
   library.add(faMagnifyingGlass);
 
   const imgHandleError = (e) => {
-    console.log("image not found");
+    console.log("image not found so another image replaced");
     e.target.src = notFound;
   };
 

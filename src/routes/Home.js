@@ -27,35 +27,23 @@ function Home() {
         <h1>Loading...</h1>
       ) : (
         <div className={styles.container}>
-          {
-            movies.map((movie) => (
-              <div className={styles.movie_content}>
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <img
-                    className={styles.movie_content_img}
-                    src={movie.medium_cover_image}
-                    alt={movie.title}
-                  />
-                </Link>
-                <div className={styles.movie_content_title}>
-                  {movie.title.length < 20
-                    ? movie.title
-                    : movie.title.slice(0, 20) + "..."}
-                </div>
-                <div className={styles.movie_content_year}>{movie.year}</div>
+          {movies.map((movie) => (
+            <div className={styles.movie_content}>
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                <img
+                  className={styles.movie_content_img}
+                  src={movie.medium_cover_image}
+                  alt={movie.title}
+                />
+              </Link>
+              <div className={styles.movie_content_title}>
+                {movie.title.length < 20
+                  ? movie.title
+                  : movie.title.slice(0, 20) + "..."}
               </div>
-            ))
-            /* {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))} */
-          }
+              <div className={styles.movie_content_year}>{movie.year}</div>
+            </div>
+          ))}
         </div>
       )}
     </div>
