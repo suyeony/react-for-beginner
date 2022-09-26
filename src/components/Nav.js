@@ -8,7 +8,7 @@ function Nav() {
         <Link to={process.env.PUBLIC_URL + "/"}>Movies</Link>
       </li>
       <li className={styles.nav_list}>
-        <Link to={process.env.PUBLIC_URL + "/search"}>Search</Link>
+        <Link to="/search">Search</Link>
       </li>
     </nav>
   );
