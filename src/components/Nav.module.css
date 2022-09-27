@@ -4,8 +4,20 @@ nav {
   top: 0px;
   width: 100%;
   position: fixed;
-  height: 50px;
+  height: 55px;
   align-items: center;
+}
+
+.nav_ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  list-style-type: none;
+}
+
+.nav_list {
+  padding: 20px;
 }
 
 .nav_list a {
@@ -15,8 +27,4 @@ nav {
 
 .nav_list a:hover {
   color: rgba(255, 255, 255, 0.5);
-}
-
-.nav_list::marker {
-  margin: 0px !important;
 }
