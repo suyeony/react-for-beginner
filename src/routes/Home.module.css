@@ -3,10 +3,16 @@
   padding: 10px;
 }
 
+.category_name {
+  position: absolute;
+  top: 65px;
+  left: 60px;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin: 90px 10px;
+  margin: 100px 10px;
   padding: 10px;
   justify-content: center;
 }

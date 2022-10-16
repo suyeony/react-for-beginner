@@ -52,7 +52,7 @@ function Search() {
           </span>
         </div>
         {loading ? (
-          <h1>Loading...</h1>
+          <h1 className={styles.loadMsg}>Loading...</h1>
         ) : (
           <div className={styles.container}>
             {movieResult &&

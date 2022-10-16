@@ -28,6 +28,11 @@ input {
   right: 500px;
 }
 
+.loadMsg {
+  margin: 90px 10px;
+  padding: 10px;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
