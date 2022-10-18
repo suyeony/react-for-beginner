@@ -44,11 +44,23 @@ function Detail() {
         <h1>loading...</h1>
       ) : (
         <div className={styles.content}>
-          <img
-            className={styles.detail_image}
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.original_title}
-          />
+          <div className={styles.poster_section}>
+            <img
+              className={styles.detail_image}
+              //src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              alt={movie.original_title}
+            />
+            <div className={styles.movie_title}>{movie.title}</div>
+            <div className={styles.movie_poster_info}>
+              <input
+                type="submit"
+                value="See the Trailer"
+                className={styles.trailer_btn}
+              />
+              <div className={styles.movie_poster_desc}>{movie.overview}</div>
+            </div>
+          </div>
           <div className={styles.movie_section}>
             <h4 className={styles.movie_about}>About</h4>
             <div className={styles.movieInfo}>
@@ -92,6 +104,8 @@ function Detail() {
                 </ul>
                 <p>Released</p>
                 <p className={styles.info_answer}>{movie.release_date}</p>
+                <p>Run Time</p>
+                <p className={styles.info_answer}>{movie.runtime} minutes</p>
                 <p>Region of Origin</p>
                 <p className={styles.info_answer}>
                   {movie.production_countries[0].name}
