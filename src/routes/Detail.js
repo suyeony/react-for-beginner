@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Detail.module.css";
 import Nav from "../components/Nav";
+import YouTube from "react-youtube";
 
 function Detail() {
   //add loading
@@ -16,16 +17,42 @@ function Detail() {
       await //await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
       (
         await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=86e1929147898523c764072b1412eed4&language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}?api_key=86e1929147898523c764072b1412eed4&language=en-US&append_to_response=videos`
         )
       ).json();
     setMovie(json);
     setLoading(false);
     console.log(json);
   };
+
   useEffect(() => {
     getMovie();
   }, []);
+
+  const selectedTrailer = () => {
+    const trailer = movie.videos.results.find(
+      (video) => video.name === "Official Trailer"
+    );
+
+    return (
+      <YouTube
+        videoId={trailer.key}
+        iframeClassName={styles.movie_trailer}
+        opts={{
+          width: "560",
+          height: "315",
+          playerVars: {
+            autoplay: 0,
+            rel: 0,
+            origin: window.location.host,
+          },
+        }}
+        onEnd={(e) => {
+          e.target.stopVideo(0);
+        }}
+      />
+    );
+  };
 
   const desc_more = () => {
     let descWindow = window.open(
@@ -47,11 +74,11 @@ function Detail() {
           <div className={styles.poster_section}>
             <img
               className={styles.detail_image}
-              //src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               alt={movie.original_title}
             />
             <div className={styles.movie_title}>{movie.title}</div>
+            {movie.videos ? selectedTrailer() : null}
             <div className={styles.movie_poster_info}>
               <input
                 type="submit"

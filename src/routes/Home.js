@@ -9,7 +9,6 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
     const response = await fetch(
-      //`https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
       `https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`
     );
     const json = await response.json();

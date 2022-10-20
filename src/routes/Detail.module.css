@@ -21,6 +21,13 @@
   left: 28px;
 }
 
+.movie_trailer {
+  position: absolute;
+  z-index: -1;
+  top: 300px;
+  left: 400px;
+}
+
 .movie_poster_info {
   display: flex;
   justify-content: flex-start;
