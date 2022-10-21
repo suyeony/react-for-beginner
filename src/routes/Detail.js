@@ -11,6 +11,8 @@ function Detail() {
   // navigation bar
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState();
+  const [trailer, setTrailer] = useState(false);
+  const [casts, setCasts] = useState([]);
   const { id } = useParams();
   const getMovie = async () => {
     const json =
@@ -30,17 +32,20 @@ function Detail() {
   }, []);
 
   const selectedTrailer = () => {
-    const trailer = movie.videos.results.find(
-      (video) => video.name === "Official Trailer"
+    console.log("button clicked");
+    const trailer = movie.videos.results.find((video) =>
+      video.name.includes("Official Trailer")
     );
+
+    console.log(trailer);
 
     return (
       <YouTube
         videoId={trailer.key}
         iframeClassName={styles.movie_trailer}
         opts={{
-          width: "560",
-          height: "315",
+          width: "100%",
+          height: "801.56px",
           playerVars: {
             autoplay: 0,
             rel: 0,
@@ -54,6 +59,21 @@ function Detail() {
     );
   };
 
+  const getCast = async () => {
+    const json = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=86e1929147898523c764072b1412eed4&language=en-US`
+      )
+    ).json();
+
+    console.log(json);
+    setCasts(json.cast);
+  };
+
+  useEffect(() => {
+    getCast();
+  }, []);
+
   const desc_more = () => {
     let descWindow = window.open(
       "about:blank",
@@ -61,7 +81,7 @@ function Detail() {
       "height=300,width=500,top=50%,left=50%,margin=20px"
     );
     descWindow.document.write(
-      `<div className=${styles.desc_more_screen}><h2>${movie.original_title}</h2><p>${movie.overview}</p></div>`
+      `<div className=${styles.desc_more_screen}><h2>${movie.title}</h2><p>${movie.overview}</p></div>`
     );
   };
   return (
@@ -78,23 +98,29 @@ function Detail() {
               alt={movie.original_title}
             />
             <div className={styles.movie_title}>{movie.title}</div>
-            {movie.videos ? selectedTrailer() : null}
+            {movie.videos && trailer ? selectedTrailer() : null}
             <div className={styles.movie_poster_info}>
               <input
-                type="submit"
+                onClick={() => setTrailer(true)}
+                type="button"
                 value="See the Trailer"
                 className={styles.trailer_btn}
               />
               <div className={styles.movie_poster_desc}>{movie.overview}</div>
+              <span>
+                Starring
+                <ul className={styles.cast_list}>
+                  {casts.map((cast) => (
+                    <li key={cast.id}>{`${cast.name} `} </li>
+                  ))}
+                </ul>
+              </span>
             </div>
           </div>
           <div className={styles.movie_section}>
             <h4 className={styles.movie_about}>About</h4>
             <div className={styles.movieInfo}>
               <h4 className={styles.title}>
-                {/* {movie.original_title
-                  ? movie.original_title
-                  : movie.belongs_to_collection.name} */}
                 {movie.title}({movie.release_date.slice(0, 4)})
               </h4>
               <ul className={styles.genre_list}>
@@ -102,10 +128,10 @@ function Detail() {
                   <li key={genre.id}>{`${genre.name} `}</li>
                 ))}
               </ul>
-              {movie.overview.length > 414 ? (
+              {movie.overview.length > 300 ? (
                 <div>
                   <p className={styles.desc}>
-                    {movie.overview.slice(0, 414)}...
+                    {movie.overview.slice(0, 300)}...
                   </p>
                   <span
                     onClick={desc_more}

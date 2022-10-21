@@ -8,7 +8,6 @@
 .detail_image {
   position: relative;
   top: 50px;
-  z-index: -1;
   width: 1425px;
 }
 
@@ -17,15 +16,13 @@
   color: white;
   font-size: 30px;
   top: 90px;
-  z-index: -1;
   left: 28px;
 }
 
 .movie_trailer {
   position: absolute;
-  z-index: -1;
-  top: 300px;
-  left: 400px;
+  top: 50px;
+  left: 0px;
 }
 
 .movie_poster_info {
@@ -34,7 +31,6 @@
   align-items: center;
   gap: 30px;
   top: 750px;
-  z-index: -1;
   position: absolute;
   padding: 10px 40px;
 }
@@ -47,6 +43,13 @@
 
 .movie_poster_desc {
   color: white;
+}
+
+.cast_list {
+  display: flex;
+  color: white;
+  list-style: none;
+  padding: 0px;
 }
 .category_title {
   padding-top: 40px;
@@ -69,7 +72,6 @@
   padding: 20px 10px;
   border-radius: 0.5em;
   width: 500px;
-  z-index: 10;
   margin: 50px;
 }
 
