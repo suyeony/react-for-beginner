@@ -107,14 +107,23 @@ function Detail() {
                 className={styles.trailer_btn}
               />
               <div className={styles.movie_poster_desc}>{movie.overview}</div>
-              <span>
-                Starring
-                <ul className={styles.cast_list}>
-                  {casts.map((cast) => (
+              {/* <span>
+                Starring */}
+              {/* <ul className={styles.cast_list}> */}
+              {/* {casts.map((cast) => (
                     <li key={cast.id}>{`${cast.name} `} </li>
-                  ))}
-                </ul>
-              </span>
+                  ))} */}
+              <div className={styles.cast_list}>
+                <span style={{ color: "#DEDCD9" }}>Starring</span>{" "}
+                {casts[0].name}, {casts[1].name}, {casts[2].name},{" "}
+                {casts[3].name}
+              </div>
+              {/* <li key={casts[0].id}>{casts[0].name}</li>
+                <li key={casts[1].id}>{casts[1].name}</li>
+                <li key={casts[2].id}>{casts[2].name}</li>
+                <li key={casts[3].id}>{casts[3].name}</li> */}
+              {/* </ul> */}
+              {/* </span> */}
             </div>
           </div>
           <div className={styles.movie_section}>

@@ -14,12 +14,14 @@ function Search() {
   const lookUp = async () => {
     const input = document.querySelector(".keyword").value;
     const response = await fetch(
-      `https://yts.mx/api/v2/list_movies.json?query_term=${input}`
+      //`https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=86e1929147898523c764072b1412eed4&language=en-US&query=${input}&page=1&include_adult=false`
+      //`https://yts.mx/api/v2/list_movies.json?query_term=${input}`
     );
     const json = await response.json();
     console.log(input);
 
-    setMovieResult(json.data.movies);
+    setMovieResult(json.results);
     setLoading(false);
   };
   useEffect(() => {
@@ -61,7 +63,7 @@ function Search() {
                   <img
                     onError={imgHandleError}
                     className={styles.search_img}
-                    src={movie.medium_cover_image}
+                    src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
                     alt={movie.title}
                   ></img>
                   <div className={styles.search_info}>
@@ -73,9 +75,6 @@ function Search() {
                       >
                         {movie.title}
                       </Link>
-                    </div>
-                    <div className={styles.search_rating}>
-                      ⭐️ {movie.rating}/10
                     </div>
                   </div>
                 </div>
