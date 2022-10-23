@@ -11,10 +11,14 @@ function Search() {
   const [loading, setLoading] = useState(true);
   const [movieResult, setMovieResult] = useState([]);
 
+  // const search_main = async () => {
+  //   const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`);
+
+  //   const json = await response.json();
+  // }
   const lookUp = async () => {
     const input = document.querySelector(".keyword").value;
     const response = await fetch(
-      //`https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`
       `https://api.themoviedb.org/3/search/movie?api_key=86e1929147898523c764072b1412eed4&language=en-US&query=${input}&page=1&include_adult=false`
       //`https://yts.mx/api/v2/list_movies.json?query_term=${input}`
     );
@@ -24,9 +28,15 @@ function Search() {
     setMovieResult(json.results);
     setLoading(false);
   };
-  useEffect(() => {
-    lookUp();
-  }, []);
+
+  // useEffect(() => {
+  //   const handleKeyPress = (e) => {
+  //     if (e.key === "Enter") {
+  //       e.preventDefault();
+  //       lookUp();
+  //     }
+  //   };
+  // }, []);
 
   library.add(faMagnifyingGlass);
 
@@ -42,14 +52,18 @@ function Search() {
       <div className={styles.search_content}>
         <div className={styles.search_input}>
           <input
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                lookUp();
+              }
+            }}
             size="50"
-            onChange={lookUp}
             className="keyword"
             type="string"
             placeholder="Search"
           ></input>
           <span className={styles.underlined}></span>
-          <span onSubmit={lookUp} className={styles.search_button}>
+          <span className={styles.search_button}>
             <FontAwesomeIcon icon="magnifying-glass" />
           </span>
         </div>

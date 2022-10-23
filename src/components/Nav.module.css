@@ -26,6 +26,29 @@ nav {
   color: white;
 }
 
+.search_input {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.search_input input {
+  background-color: black;
+  border-style: groove;
+  border-color: white;
+  border-radius: 0.3em;
+  color: white;
+  padding-left: 27px;
+}
+
+.search_button {
+  position: absolute;
+  color: white;
+  right: 144px;
+  color: #a3a3a3;
+}
+
 .nav_list a:hover {
   color: rgba(255, 255, 255, 0.5);
 }
