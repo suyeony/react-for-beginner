@@ -5,10 +5,20 @@
   width: 100%;
 }
 
+.image_container {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1)
+  );
+}
+
 .detail_image {
   position: relative;
   top: 50px;
   width: 1425px;
+  z-index: -1;
+  backdrop-filter: blur(1px);
 }
 
 .movie_title {

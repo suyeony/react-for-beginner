@@ -92,11 +92,19 @@ function Detail() {
       ) : (
         <div className={styles.content}>
           <div className={styles.poster_section}>
-            <img
+            <div className={styles.image_container}>
+              <img
+                className={styles.detail_image}
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                alt={movie.original_title}
+              />
+            </div>
+            {/* <div
               className={styles.detail_image}
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-              alt={movie.original_title}
-            />
+              style={{
+                backgroundImage: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+              }}
+            ></div> */}
             <div className={styles.movie_title}>{movie.title}</div>
             {movie.videos && trailer ? selectedTrailer() : null}
             <div className={styles.movie_poster_info}>
