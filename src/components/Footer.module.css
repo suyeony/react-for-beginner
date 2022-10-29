@@ -1,5 +1,9 @@
 .footer {
+  height: 55px;
 }
 
 .footer_container {
+  color: #949494;
+  padding: 20px 47px;
+  font-size: small;
 }

@@ -14,17 +14,17 @@
 }
 
 .leftArrow {
-  position: fixed;
+  position: absolute;
   left: 0px;
-  top: 200px;
+  top: 100px;
   border-style: none;
   background-color: none;
 }
 
 .rightArrow {
-  position: fixed;
+  position: absolute;
   right: 0px;
-  top: 200px;
+  top: 100px;
   border-style: none;
 }
 
@@ -36,7 +36,6 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
@@ -53,6 +52,8 @@
 .movie_content_img {
   padding: 0px;
   margin: 20px 10px 0px 10px;
+  width: 253px;
+  border-radius: 0.7em;
 }
 .movie_content_title {
   font-size: 15px;

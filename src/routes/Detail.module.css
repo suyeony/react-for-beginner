@@ -11,6 +11,7 @@
     rgba(0, 0, 0, 0) 60%,
     rgba(0, 0, 0, 1)
   );
+  height: 851px;
 }
 
 .detail_image {
@@ -40,7 +41,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
-  top: 720px;
+  top: 760px;
   position: absolute;
   padding: 10px;
 }
@@ -68,6 +69,62 @@
   height: 700px;
   background-color: #f0f0f3;
   padding: 50px 0px;
+}
+
+.cast_section {
+}
+
+.cast_wrap {
+  position: relative;
+}
+
+.cast_container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0px 30px;
+  padding: 10px;
+  justify-content: flex-start;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.cast_container::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.leftArrow {
+  position: absolute;
+  left: 0px;
+  top: 80px;
+  border-style: none;
+}
+
+.rightArrow {
+  position: absolute;
+  right: 0px;
+  top: 80px;
+  border-style: none;
+}
+
+.cast_card {
+  text-align: center;
+}
+
+.cast_img {
+  width: 116px;
+  height: 116px;
+  padding: 0px;
+  margin: 20px 10px 0px 10px;
+}
+
+.cast_name {
+  font-size: small;
+}
+
+.character_name {
+  font-size: small;
 }
 
 .movie_about {

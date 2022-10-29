@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Detail.module.css";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import YouTube from "react-youtube";
 
 function Detail() {
@@ -14,6 +15,7 @@ function Detail() {
   const [trailer, setTrailer] = useState(false);
   const [casts, setCasts] = useState([]);
   const { id } = useParams();
+  const cont_ref = useRef(null);
   const getMovie = async () => {
     const json =
       await //await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
@@ -74,6 +76,18 @@ function Detail() {
     getCast();
   }, []);
 
+  const leftScroll = (ref) => {
+    ///const left = document.querySelector(".container");
+    console.log(ref);
+    ref.scrollBy(-1345, 0);
+  };
+
+  const rightScroll = (ref) => {
+    // const right = document.querySelector(".container");
+    console.log(ref);
+    ref.scrollBy(1345, 0);
+  };
+
   const desc_more = () => {
     let descWindow = window.open(
       "about:blank",
@@ -99,12 +113,6 @@ function Detail() {
                 alt={movie.original_title}
               />
             </div>
-            {/* <div
-              className={styles.detail_image}
-              style={{
-                backgroundImage: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
-              }}
-            ></div> */}
             <div className={styles.movie_title}>{movie.title}</div>
             {movie.videos && trailer ? selectedTrailer() : null}
             <div className={styles.movie_poster_info}>
@@ -115,17 +123,47 @@ function Detail() {
                 className={styles.trailer_btn}
               />
               <div className={styles.movie_poster_desc}>{movie.overview}</div>
-              {/* <span>
-                Starring */}
-              {/* <ul className={styles.cast_list}> */}
-              {/* {casts.map((cast) => (
-                    <li key={cast.id}>{`${cast.name} `} </li>
-                  ))} */}
               <div className={styles.cast_list}>
                 <span style={{ color: "#DEDCD9" }}>Starring</span>{" "}
                 {casts[0].name}, {casts[1].name}, {casts[2].name},{" "}
                 {casts[3].name}
               </div>
+            </div>
+          </div>
+          <div className={styles.cast_section}>
+            <h4 className={styles.movie_about}>Cast Crew</h4>
+            <div className={styles.cast_wrap}>
+              <button
+                className={styles.leftArrow}
+                onClick={() => {
+                  leftScroll(cont_ref.current);
+                }}
+              >
+                &#60;
+              </button>
+              <div className={styles.cast_container} ref={cont_ref}>
+                {casts.map((cast) => (
+                  <div className={styles.cast_card}>
+                    <img
+                      className={styles.cast_img}
+                      src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
+                      alt={cast.name}
+                    />
+                    <div className={styles.cast_name}>{cast.name}</div>
+                    <div className={styles.character_name}>
+                      {cast.character}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                className={styles.rightArrow}
+                onClick={() => {
+                  rightScroll(cont_ref.current);
+                }}
+              >
+                &#62;
+              </button>
             </div>
           </div>
           <div className={styles.movie_section}>
@@ -186,6 +224,7 @@ function Detail() {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

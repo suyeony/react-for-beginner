@@ -26,13 +26,13 @@ function Home() {
   const leftScroll = (ref) => {
     ///const left = document.querySelector(".container");
     console.log(ref);
-    ref.scrollBy(-1325, 0);
+    ref.scrollBy(-1365, 0);
   };
 
   const rightScroll = (ref) => {
     // const right = document.querySelector(".container");
     console.log(ref);
-    ref.scrollBy(1325, 0);
+    ref.scrollBy(1365, 0);
   };
 
   // const searchMovies = async () => {
@@ -77,7 +77,8 @@ function Home() {
                     <Link key={movie.id} to={`/movie/${movie.id}`}>
                       <img
                         className={styles.movie_content_img}
-                        src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
+                        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                        //src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
                         alt={movie.name}
                       />
                     </Link>
