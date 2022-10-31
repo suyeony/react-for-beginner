@@ -81,8 +81,9 @@
 .cast_container {
   display: flex;
   flex-wrap: nowrap;
-  margin: 0px 30px;
+  margin: 0px 20px;
   padding: 10px;
+  width: 1360px;
   justify-content: flex-start;
   position: relative;
   overflow-x: auto;
@@ -99,6 +100,8 @@
   left: 0px;
   top: 80px;
   border-style: none;
+  background-color: white;
+  font-size: larger;
 }
 
 .rightArrow {
@@ -106,6 +109,8 @@
   right: 0px;
   top: 80px;
   border-style: none;
+  background-color: white;
+  font-size: larger;
 }
 
 .cast_card {
@@ -117,6 +122,7 @@
   height: 116px;
   padding: 0px;
   margin: 20px 10px 0px 10px;
+  border-radius: 50%;
 }
 
 .cast_name {
@@ -125,6 +131,7 @@
 
 .character_name {
   font-size: small;
+  color: #707070;
 }
 
 .movie_about {

@@ -17,22 +17,28 @@
   position: absolute;
   left: 0px;
   top: 100px;
+  margin: 0px 10px;
   border-style: none;
-  background-color: none;
+  background-color: white;
+  font-size: larger;
 }
 
 .rightArrow {
   position: absolute;
   right: 0px;
   top: 100px;
+  margin: 0px 10px;
   border-style: none;
+  background-color: white;
+  font-size: larger;
 }
 
 .container {
   display: flex;
   flex-wrap: nowrap;
-  margin: 100px 20px;
+  margin: 100px 30px;
   padding: 10px;
+  width: 1365px;
   justify-content: flex-start;
   align-items: center;
   position: relative;

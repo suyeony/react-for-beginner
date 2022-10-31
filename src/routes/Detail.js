@@ -68,8 +68,8 @@ function Detail() {
       )
     ).json();
 
-    console.log(json);
     setCasts(json.cast);
+    console.log(json.cast);
   };
 
   useEffect(() => {
