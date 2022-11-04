@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Nav from "../components/Nav";
 import styles from "./Search.module.css";
 import { Link } from "react-router-dom";
@@ -10,24 +10,35 @@ import notFound from "../components/image_not_found.png";
 function Search() {
   const [loading, setLoading] = useState(true);
   const [movieResult, setMovieResult] = useState([]);
+  const [input, setInput] = useState("");
+  const pRef = useRef();
 
-  // const search_main = async () => {
-  //   const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`);
+  const handleSubmit = (e) => {
+    e.preventDefualt();
 
-  //   const json = await response.json();
-  // }
+    pRef.current.innerHTML = input;
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
   const lookUp = async () => {
-    const input = document.querySelector(".keyword").value;
+    // const input = document.querySelector(".keyword").value;
     const response = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=86e1929147898523c764072b1412eed4&language=en-US&query=${input}&page=1&include_adult=false`
-      //`https://yts.mx/api/v2/list_movies.json?query_term=${input}`
     );
     const json = await response.json();
-    console.log(input);
 
+    console.log(input);
+    console.log(json.results);
     setMovieResult(json.results);
     setLoading(false);
   };
+
+  useEffect(() => {
+    lookUp();
+  }, []);
 
   // useEffect(() => {
   //   const handleKeyPress = (e) => {
@@ -46,6 +57,7 @@ function Search() {
   };
 
   console.log(movieResult);
+
   return (
     <div>
       <Nav />
@@ -57,6 +69,8 @@ function Search() {
                 lookUp();
               }
             }}
+            onSubmit={handleSubmit}
+            onChange={handleChange}
             size="50"
             className="keyword"
             type="string"
