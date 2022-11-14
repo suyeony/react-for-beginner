@@ -4,9 +4,9 @@
 }
 
 .category_name {
-  position: absolute;
-  top: 65px;
-  left: 40px;
+  position: relative;
+  top: 100px;
+  left: 50px;
 }
 
 .container_wrap {
@@ -27,7 +27,6 @@
   position: absolute;
   right: 0px;
   top: 100px;
-  margin: 0px 10px;
   border-style: none;
   background-color: white;
   font-size: larger;
@@ -36,7 +35,7 @@
 .container {
   display: flex;
   flex-wrap: nowrap;
-  margin: 100px 30px;
+  margin: 80px 30px 0px 30px;
   padding: 10px;
   width: 1365px;
   justify-content: flex-start;

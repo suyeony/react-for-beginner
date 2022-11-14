@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [loading, setLoading] = useState(true);
+  //popular category
   const [movies, setMovies] = useState([]);
+
+  //top rated category
+  const [topMovies, setTopMovies] = useState([]);
   const cont_ref = useRef(null);
-  const container = document.querySelector(".container");
   const getMovies = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`
@@ -19,18 +22,29 @@ function Home() {
     setMovies(json.results);
     setLoading(false);
   };
+
+  const getTopMovies = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`
+    );
+    const json = await response.json();
+
+    setTopMovies(json.results);
+  };
   useEffect(() => {
     getMovies();
   }, []);
 
+  useEffect(() => {
+    getTopMovies();
+  }, []);
+
   const leftScroll = (ref) => {
-    ///const left = document.querySelector(".container");
     console.log(ref);
     ref.scrollBy(-1365, 0);
   };
 
   const rightScroll = (ref) => {
-    // const right = document.querySelector(".container");
     console.log(ref);
     ref.scrollBy(1365, 0);
   };
@@ -60,60 +74,69 @@ function Home() {
         <h1 className={styles.loadMsg}>Loading...</h1>
       ) : (
         <div>
-          <h2 className={styles.category_name}>Popular</h2>
-          <div className={styles.container_wrap}>
-            <button
-              className={styles.leftArrow}
-              onClick={() => {
-                leftScroll(cont_ref.current);
-              }}
-            >
-              &#60;
-            </button>
-            <div className={styles.container} ref={cont_ref}>
-              {
-                movies.map((movie) => (
-                  <div className={styles.movie_content}>
-                    <Link key={movie.id} to={`/movie/${movie.id}`}>
-                      <img
-                        className={styles.movie_content_img}
-                        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                        //src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
-                        alt={movie.name}
-                      />
-                    </Link>
-                    <div className={styles.movie_content_title}>
-                      {movie.title.length < 20
-                        ? movie.title
-                        : movie.title.slice(0, 20) + "..."}
-                    </div>
-                    <div className={styles.movie_content_year}>
-                      {movie.release_date
-                        ? movie.release_date.slice(0, 4)
-                        : movie.release_date.slice(0, 4)}
-                    </div>
-                  </div>
-                ))
-                /* {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))} */
-              }
+          <div className={styles.container_main}>
+            <h2 className={styles.category_name}>Popular</h2>
+            <div className={styles.container_wrap}>
+              <button
+                className={styles.leftArrow}
+                onClick={() => {
+                  leftScroll(cont_ref.current);
+                }}
+              >
+                &#60;
+              </button>
+              <div className={styles.container} ref={cont_ref}>
+                {movies.map((movie) => (
+                  <Movie
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    backdrop_path={movie.backdrop_path}
+                    release_date={movie.release_date}
+                  />
+                ))}
+              </div>
+              <button
+                className={styles.rightArrow}
+                onClick={() => {
+                  rightScroll(cont_ref.current);
+                }}
+              >
+                &#62;
+              </button>
             </div>
-            <button
-              className={styles.rightArrow}
-              onClick={() => {
-                rightScroll(cont_ref.current);
-              }}
-            >
-              &#62;
-            </button>
+          </div>
+          <div className={styles.category_main}>
+            <h2 className={styles.category_name}>Top Rated</h2>
+            <div className={styles.container_wrap}>
+              <button
+                className={styles.leftArrow}
+                onClick={() => {
+                  leftScroll(cont_ref.current);
+                }}
+              >
+                &#60;
+              </button>
+              <div className={styles.container} ref={cont_ref}>
+                {topMovies.map((movie) => (
+                  <Movie
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    backdrop_path={movie.backdrop_path}
+                    release_date={movie.release_date}
+                  />
+                ))}
+              </div>
+              <button
+                className={styles.rightArrow}
+                onClick={() => {
+                  rightScroll(cont_ref.current);
+                }}
+              >
+                &#62;
+              </button>
+            </div>
           </div>
         </div>
       )}

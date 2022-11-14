@@ -1,27 +1,18 @@
-.content {
-  box-sizing: border-box;
-  text-align: center;
-  background-color: aliceblue;
-  border-radius: 1em;
-  margin: 10px;
+.movie_content_img {
+  padding: 0px;
+  margin: 20px 10px 0px 10px;
+  width: 253px;
+  border-radius: 0.7em;
+}
+.movie_content_title {
   font-size: 15px;
-  position: relative;
+  padding: 0px;
+  margin: 0px 10px;
 }
 
-.content_img {
-  margin-top: 20px;
-}
-
-.summary {
-  margin: 60px 20px;
-}
-
-.genre_list {
-  position: absolute;
-  display: flex;
-  list-style: none;
-  bottom: -10px;
+.movie_content_year {
+  font-size: 10px;
   color: darkgray;
   padding: 0px;
-  margin: 20px;
+  margin: 0px 10px;
 }
