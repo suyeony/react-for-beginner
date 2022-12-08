@@ -12,7 +12,8 @@ function Home() {
 
   //top rated category
   const [topMovies, setTopMovies] = useState([]);
-  const cont_ref = useRef(null);
+  const cont_ref_popular = useRef(null);
+  const cont_ref_top = useRef(null);
   const getMovies = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=86e1929147898523c764072b1412eed4&language=en-US&page=1`
@@ -80,12 +81,12 @@ function Home() {
               <button
                 className={styles.leftArrow}
                 onClick={() => {
-                  leftScroll(cont_ref.current);
+                  leftScroll(cont_ref_popular.current);
                 }}
               >
                 &#60;
               </button>
-              <div className={styles.container} ref={cont_ref}>
+              <div className={styles.container} ref={cont_ref_popular}>
                 {movies.map((movie) => (
                   <Movie
                     key={movie.id}
@@ -99,7 +100,7 @@ function Home() {
               <button
                 className={styles.rightArrow}
                 onClick={() => {
-                  rightScroll(cont_ref.current);
+                  rightScroll(cont_ref_popular.current);
                 }}
               >
                 &#62;
@@ -112,12 +113,12 @@ function Home() {
               <button
                 className={styles.leftArrow}
                 onClick={() => {
-                  leftScroll(cont_ref.current);
+                  leftScroll(cont_ref_top.current);
                 }}
               >
                 &#60;
               </button>
-              <div className={styles.container} ref={cont_ref}>
+              <div className={styles.container} ref={cont_ref_top}>
                 {topMovies.map((movie) => (
                   <Movie
                     key={movie.id}
@@ -131,7 +132,7 @@ function Home() {
               <button
                 className={styles.rightArrow}
                 onClick={() => {
-                  rightScroll(cont_ref.current);
+                  rightScroll(cont_ref_top.current);
                 }}
               >
                 &#62;
